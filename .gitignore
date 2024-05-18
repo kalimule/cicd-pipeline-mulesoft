@@ -49,3 +49,6 @@ velocity.log
 reports/
 .tooling-project
 .vscode/settings.json
+.tooling
+.tooling-apps-cache
+.settings
