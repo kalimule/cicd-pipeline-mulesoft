@@ -55,6 +55,18 @@ jobs:
       with:
         distribution: 'zulu'
         java-version: 8
+    - name: Publish to Exchange
+      env:
+        #USERNAME: ${{ secrets.anypoint_platform_username }}
+        #PASSWORD: ${{ secrets.anypoint_platform_password }}
+        ID: ${{ secrets.CONNECTED_APP_CLIENT_ID }}
+        SECRET: ${{ secrets.CONNECTED_APP_CLIENT_SECRET }}
+        KEY: ${{ secrets.decryption_key }}
+        run: |
+          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
+          -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
+          -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}"
+          
     - name: Build with Maven
       run: mvn clean -B package --file pom.xml -s .maven/settings.xml -DskipMunitTests
     - name: Stamp artifact file name with commit hash
@@ -85,17 +97,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: artifacts
-    - name: Publish to Exchange
-      env:
-        #USERNAME: ${{ secrets.anypoint_platform_username }}
-        #PASSWORD: ${{ secrets.anypoint_platform_password }}
-        ID: ${{ secrets.CONNECTED_APP_CLIENT_ID }}
-        SECRET: ${{ secrets.CONNECTED_APP_CLIENT_SECRET }}
-        KEY: ${{ secrets.decryption_key }}
-        run: |
-          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
-          -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
-          -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}"
+    
     - name: Deploy to Sandbox
       env:
         #USERNAME: ${{ secrets.anypoint_platform_username }}
