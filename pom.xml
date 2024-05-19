@@ -4,7 +4,7 @@
 
 	<groupId>198877df-bef7-43a5-8757-29b03781558d</groupId>
 	<artifactId>cicd-pipeline-mulesoft-app</artifactId>
-	<version>1.0.2</version>
+	<version>2.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>cicd-pipeline-mulesoft-app</name>
