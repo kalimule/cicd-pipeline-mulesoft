@@ -94,7 +94,7 @@ jobs:
         KEY: ${{ secrets.decryption_key }}
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn deploy -DskipMunitTests -DmuleDeploy \
+        mvn -e -X clean deploy -DskipMunitTests -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Dclient.id="$ID" \
          -Dclient.secret="$SECRET" \
