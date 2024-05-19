@@ -40,10 +40,19 @@
                         <environment>Sandbox</environment>
                         <target>Cloudhub-US-East-2</target>
                         <server>Repository</server>
+						<!-- <username>${anypoint.username}</username>
+						<password>${anypoint.password}</password> -->
+						<!-- Start: CONNECTED APP -->
+						<connectedAppClientId>${client.id}</connectedAppClientId>
+						<connectedAppClientSecret>${client.secret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<!-- End: CONNECTED APP -->
+
                         <applicationName>${project.artifactId}</applicationName>
-                        <releaseChannel>NONE</releaseChannel>
+                        <releaseChannel>LTS</releaseChannel>
                         <replicas>1</replicas>
                         <vCores>0.1</vCores>
+						<businessGroupId>${project.groupId}</businessGroupId>
                         <deploymentSettings>
                             <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
                         </deploymentSettings>
