@@ -11,6 +11,11 @@
       <username>${nexus_username}</username>
       <password>${nexus_password}</password>
     </server>
+    <server>
+      <id>anypoint-exchange-v3</id>
+      <username>~~~Client~~~</username>
+      <password>${client.id}~?~${client.secret}</password>
+    </server>
   </servers>
 
   <profiles>
