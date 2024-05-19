@@ -62,8 +62,8 @@ jobs:
         ID: ${{ secrets.CONNECTED_APP_CLIENT_ID }}
         SECRET: ${{ secrets.CONNECTED_APP_CLIENT_SECRET }}
         KEY: ${{ secrets.decryption_key }}
-        run: |
-          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
+      run: |
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests \
           -Dclient.id="${{ secrets.CONNECTED_APP_CLIENT_ID }}" \
           -Dclient.secret="${{ secrets.CONNECTED_APP_CLIENT_SECRET }}"
           
